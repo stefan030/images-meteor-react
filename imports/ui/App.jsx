@@ -26,6 +26,7 @@ export default class App extends Component {
     }
 
     render() {
+        console.log(this.state.images);
         return (
             <div>
                 <ImageList images={this.state.images} />
