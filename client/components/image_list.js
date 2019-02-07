@@ -1,24 +1,16 @@
 import React from 'react';
 import ImageDetail from './image_detail';
 
-const IMAGES = [
-    {
-        title: 'Pen',
-        link: 'https://dummyimage.com/600x400'
-    },
-    {
-        title: 'Pine Tree',
-        link: 'https://dummyimage.com/600x400'
-    },
-    {
-        title: 'Mug',
-        link: 'https://dummyimage.com/600x400'
-    }
-];
 
-const ImageList = () => {
-    const RenderedImages = IMAGES.map(function(image) {
-        return <ImageDetail image={image} />
+const ImageList = (props) => {
+    // Every image that is not an album will pass this test and be added to validImages array
+    const validImages = props.images.filter(image => {
+        return !image.is_album;
+    })
+
+    // Map over validImages array
+    const RenderedImages = validImages.map((image) => {
+        return <ImageDetail key={image.title} image={image} />
     });
 
     return(
